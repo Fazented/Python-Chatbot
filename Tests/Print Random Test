@@ -5,7 +5,7 @@ randomizer = randint(1,6)
 
 choice = input("What do you want me to do? ").lower()
 
-if choice == "tell me a joke" or choice == "tell a joke" or choice == "give me a joke":
+if "joke" in choice :
     if randomizer == 1:
         print("What do you call a fish with no eyes?")
         time.sleep(1)
