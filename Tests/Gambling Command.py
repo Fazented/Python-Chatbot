@@ -11,6 +11,8 @@ print(Fore.WHITE)
 while StillGambling == True:
     GambleAmount = input("How much money do you want to gamble? ")
     if GambleAmount.isdigit():
-        print("YOU'RE MOTHER")
+        GambleAmount == int(GambleAmount)
+        GambleAmount == GambleAmount * 2
+        print(GambleAmount)
     else:
         print("Please enter a whole number next time.")
