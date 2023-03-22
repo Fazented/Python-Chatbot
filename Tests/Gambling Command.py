@@ -2,10 +2,10 @@ from random import randint
 import colorama
 from colorama import Fore
 
-print(Fore.WHITE)
 money = 1000
 StillGambling = True
 
+print(Fore.WHITE)
 print(Fore.GREEN + "You Have $", money)
 print(Fore.WHITE)
 
@@ -17,7 +17,7 @@ while StillGambling == True:
         if GambleAmount < money and chance == 6:
             print("You Won", GambleAmount * 2,"!")
             print(Fore.GREEN + "You now Have $", GambleAmount + money)
-            print(Fore.GREEN)
+            print(Fore.WHITE)
         elif GambleAmount > money:
             print(Fore.RED + "You don't have enough money for that.")
             print(Fore.WHITE)
