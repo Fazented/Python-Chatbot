@@ -15,7 +15,7 @@ async def getweather():
     # returns the current temperature (int)
     print("The current temperature is",weather.current.temperature)
 
-#    # get the weather forecast for a few days
+#    # get the weather forecast for a few days         [all this code here is not needed, it was with the example code]
 #    for forecast in weather.forecasts:
 #      print(forecast.date, forecast.astronomy)
 

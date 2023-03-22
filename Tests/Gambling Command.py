@@ -1,5 +1,4 @@
 from random import randint
-import colorama
 from colorama import Fore
 
 money = 1000
