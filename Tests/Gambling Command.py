@@ -10,10 +10,10 @@ print(Fore.WHITE)
 
 while StillGambling == True:
     GambleAmount = input(Fore.WHITE + "How much money do you want to gamble? ")
-    chance = randint(1,6)
+    chance = randint(1,5)
     if GambleAmount.isdigit():
         GambleAmount = int(GambleAmount)
-        if GambleAmount <= money and chance == 6:
+        if GambleAmount <= money and chance == 1:
             GambleAmount*=2
             print(f"You Won ${GambleAmount}")
             GambleAmount += money
@@ -22,7 +22,7 @@ while StillGambling == True:
         elif GambleAmount > money:
             print(Fore.RED + "You don't have enough money for that.")
             print(Fore.WHITE)
-        elif GambleAmount <= money and chance != 6:
+        elif GambleAmount <= money and chance != 1:
             print(f"You lost ${GambleAmount}!")
             money -= GambleAmount
             print(Fore.GREEN + f"You now Have ${money}")
