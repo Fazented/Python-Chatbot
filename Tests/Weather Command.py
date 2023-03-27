@@ -2,7 +2,11 @@
 import python_weather
 import asyncio
 import os
-# PRETTY MUCH ALL OF THIS CODE IS FROM PYTHON-WEATHER
+import datetime
+ 
+today = datetime.datetime.today()
+
+# PRETTY MUCH ALL OF THIS CODE IS FROM PYTHON-WEATHER, EXCEPT FOR THE DATETIME PART AND THE OUTPUT
 
 location = input("What place do you want the weather from? ")
 
@@ -13,13 +17,12 @@ async def getweather():
     weather = await client.get(location)
   
     # returns the current temperature (int)
-    print("The current temperature is",weather.current.temperature)
-
-#    # get the weather forecast for a few days         [all this code here is not needed, it was with the example code]
+    print(f"The current temperature on {today:%B %d} is {weather.current.temperature}°")
+    # get the weather forecast for a few days
 #    for forecast in weather.forecasts:
 #      print(forecast.date, forecast.astronomy)
-
-#      # hourly forecasts
+  
+      # hourly forecasts
 #      for hourly in forecast.hourly:
 #        print(f' --> {hourly!r}')
 
