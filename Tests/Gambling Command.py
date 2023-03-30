@@ -17,7 +17,7 @@ while StillGambling == True:
             GambleAmount*=2
             print(f"You Won ${GambleAmount}")
             GambleAmount += money
-            print(Fore.GREEN + f"You now Have ${money}")
+            print(Fore.GREEN + f"\nYou now Have ${money}")
             print(Fore.WHITE)
         elif GambleAmount > money:
             print(Fore.RED + "You don't have enough money for that.")
@@ -25,7 +25,7 @@ while StillGambling == True:
         elif GambleAmount <= money and chance != 1:
             print(f"You lost ${GambleAmount}!")
             money -= GambleAmount
-            print(Fore.GREEN + f"You now Have ${money}")
+            print(Fore.GREEN + f"\nYou now Have ${money}")
             print(Fore.WHITE)
         else:
             print("Sorry, Please Try Again")
