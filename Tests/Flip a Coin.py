@@ -10,9 +10,9 @@ if "coin" in choice:
     print("Okay, Flipping a coin.")
     time.sleep(1)
     if coinflip == 1:
-        print("The coin is Tails.")
+        print("\nThe coin is Tails.")
     else:
-        print("The coin is Heads.")
+        print("\nThe coin is Heads.")
 else:
     print("Error")
 
