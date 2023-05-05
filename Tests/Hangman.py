@@ -2,7 +2,7 @@ import random
 
 words = ["python", "computer", "programming", "code", "algorithm"]
 
-choice = input("What do you want me to do? ").lower
+choice = input("What do you want me to do? ").lower()
 
 if "hangman" in choice:
     guesses = ""
