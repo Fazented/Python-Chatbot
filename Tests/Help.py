@@ -1,4 +1,4 @@
-commandlist = ["Joke", "Flip a Coin", "Weather", "Gambling", "Hangman", "Inspirational Quote", "Help" ] # List of commands for help command
+commandlist = ["Joke", "Flip a Coin", "Weather", "Gambling", "Hangman", "Day", "Inspirational Quote", "Help" ] # List of commands for help command
 
 choice = input("What do you want me to do? ").lower()
 
@@ -25,5 +25,7 @@ if "help" in choice:
         print("The Quote command will get a random inspirational quote from InspiroBot. These quotes may be very strange though, so beware!")
     elif "help" in choice:
         print("I would assume the help command would be simple, but I guess not...")
+    elif "day" in choice:
+        print("The day command returns the current day.")
     else:
         print("error")

@@ -2,9 +2,9 @@
 import python_weather
 import asyncio
 import os
-import datetime
+from datetime import datetime
  
-today = datetime.datetime.today()
+today = datetime.today()
 
 # PRETTY MUCH ALL OF THIS CODE IS FROM PYTHON-WEATHER, EXCEPT FOR THE DATETIME PART AND THE OUTPUT
 
@@ -18,13 +18,6 @@ async def getweather():
   
     # returns the current temperature (int)
     print(f"The current temperature on {today:%B %d} is {weather.current.temperature}°")
-    # get the weather forecast for a few days
-#    for forecast in weather.forecasts:
-#      print(forecast.date, forecast.astronomy)
-  
-      # hourly forecasts
-#      for hourly in forecast.hourly:
-#        print(f' --> {hourly!r}')
 
 if __name__ == "__main__":
   if os.name == "nt":
