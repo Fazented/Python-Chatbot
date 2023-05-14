@@ -10,11 +10,16 @@ import os
 import datetime
 
 commandlist = ["Joke", "Flip a Coin", "Weather", "Gambling", "Hangman", "Day", "Inspirational Quote", "Help" ] # List of commands for help command
-words = ["python", "computer", "programming", "code", "algorithm"] # words to guess in Hangman
+words = ["python", "computer", "programming", "code", "algorithm", "coder", "school"] # words to guess in Hangman
+greetings = ["hello", "hi", "yo", "greeting", "howdy", "hey", "bonjour"] # List of greetings for the chatbot to recognise
 
-today = datetime.today() # Gets the current day for weather and day command
 gamblingchance = randint(1,20) # Chance to score a win while gambling
 money = 1000 # Amount of money to start gambling
+running = True # loops the chatbot
+
+# Defining the actual chat part of chatbot
+def chat():
+    print("Sorry, not avalible yet!")
 
 # Defining all commands
 def joke():
@@ -59,8 +64,17 @@ def flipcoin():
     else:
         print("\nThe coin is Heads.")
 
+def quote():
+
+    quote = inspirobot.generate()
+    img_url = quote.url
+    img = Image.open(requests.get(img_url, stream = True).raw)
+    img.save('inspiration.jpg')
+    img.show()
+
 def weather():
 
+    today = datetime.today() # Gets the current day for weather
     location = input("What place do you want the weather from? ")
 
     async def getweather():
@@ -141,14 +155,6 @@ def day():
     today = datetime.today()
     print("Today is", today)
 
-def quote():
-
-    quote = inspirobot.generate()
-    img_url = quote.url
-    img = Image.open(requests.get(img_url, stream = True).raw)
-    img.save('inspiration.jpg')
-    img.show()
-
 def help():
 
     print(f"What command do you want to know about? There are currently {len(commandlist)} commands.")
@@ -179,13 +185,28 @@ def help():
         print("error")
 
 print("Hello, I am Sadness Bot. An eternally sad chatbot. Use 'Help' to see a list of commands.")
-choice = input("What do you want me to do? ")
 
+# Main chatbot loop
+while running == True:
+    choice = input("What do you want me to do? ").lower
 
-
-
-
-
-
-
-
+    if greetings in choice:
+        chat()
+    elif "joke" in choice:
+        joke()
+    elif "coin" in choice:
+        flipcoin()
+    elif "quote" in choice:
+        quote()
+    elif "weather" in choice:
+        weather()
+    elif "gambling" in choice:
+        gambling()
+    elif "hangman" in choice:
+        hangman()
+    elif "day" in choice:
+        day()
+    elif "help" in choice:
+        help()
+    else:
+        print("Sorry, that is not a vlid command. Type Help to see all usable commands.")
