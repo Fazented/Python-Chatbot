@@ -188,25 +188,25 @@ print("Hello, I am Sadness Bot. An eternally sad chatbot. Use 'Help' to see a li
 
 # Main chatbot loop
 while running == True:
-    choice = input("What do you want me to do? ").lower
+    user_choice = input("What do you want me to do? ").lower
 
-    if greetings in choice:
+    if greetings in user_choice:
         chat()
-    elif "joke" in choice:
+    elif "joke" in user_choice:
         joke()
-    elif "coin" in choice:
+    elif "coin" in user_choice:
         flipcoin()
-    elif "quote" in choice:
+    elif "quote" in user_choice:
         quote()
-    elif "weather" in choice:
+    elif "weather" in user_choice:
         weather()
-    elif "gambling" in choice:
+    elif "gambling" in user_choice:
         gambling()
-    elif "hangman" in choice:
+    elif "hangman" in user_choice:
         hangman()
-    elif "day" in choice:
+    elif "day" in user_choice:
         day()
-    elif "help" in choice:
+    elif "help" in user_choice:
         help()
     else:
         print("Sorry, that is not a vlid command. Type Help to see all usable commands.")
