@@ -9,7 +9,7 @@ import asyncio
 import os
 import datetime
 
-commandlist = ["Joke", "Flip a Coin", "Weather", "Gambling", "Hangman", "Day", "Maths", "Inspirational Quote", "Help" ] # List of commands for help command
+commandlist = ["Joke", "Flip a Coin", "Weather", "Gambling", "Hangman", "Day", "Maths", "Random", "Inspirational Quote", "Help" ] # List of commands for help command
 words = ["python", "computer", "programming", "code", "algorithm", "coder", "school"] # words to guess in Hangman
 # Lists of words for the chat part to recognise
 greetings = ["hello", "hi", "yo", "greeting", "howdy", "hey", "bonjour"] # List of greetings
@@ -176,6 +176,7 @@ def maths():
                 break
             except ValueError:
                 print("Sorry, That is not a valid number!")
+                continue
         print(f"The answer is {x+y}")
     elif "subtract" in choice or "minus" in choice:
         while True:
@@ -185,6 +186,7 @@ def maths():
                 break
             except ValueError:
                 print("Sorry, That is not a valid number!")
+                continue
         print(f"The answer is {x-y}")
     elif "multiply" in choice or "multiplication" in choice:
         while True:
@@ -194,6 +196,7 @@ def maths():
                 break
             except ValueError:
                 print("Sorry, That is not a valid number!")
+                continue
         print(f"The answer is {x*y}")
     elif "divide" in choice or "division" in choice:
         while True:
@@ -209,6 +212,33 @@ def maths():
     else:
         print("Error, enter a correct operation. Or, type exit or quit to leave.")
 
+def random_command():
+
+    selectedcommand = random.choice(commandlist)
+
+    print(f"The command selected is {selectedcommand}")
+
+    if "help" in selectedcommand.lower():
+        help()
+    elif "joke" in selectedcommand.lower():
+        joke()
+    elif "coin" in selectedcommand.lower():
+        flipcoin()
+    elif "quote" in selectedcommand.lower():
+        quote()
+    elif "weather" in selectedcommand.lower():
+        weather()
+    elif "gambling" in selectedcommand.lower():
+        gambling()
+    elif "hangman" in selectedcommand.lower():
+        hangman()
+    elif "day" in selectedcommand.lower():
+        day()
+    elif "math" in selectedcommand.lower():
+        maths()
+    else:
+        print("Error!")  
+
 def help():
 
     print(f"What command do you want to know about? There are currently {len(commandlist)} commands.")
@@ -217,7 +247,7 @@ def help():
             print("{}, ".format(x), end = "");
         else:
             print("and {}.".format(x), end = "");
-    choice = input(" ").lower
+    choice = input("\n> ").lower()
     
     if "joke" in choice:
         print("The Joke command will tell you a random joke when you ask.")
@@ -233,6 +263,8 @@ def help():
         print("The Quote command will get a random inspirational quote from InspiroBot. These quotes may be very strange though, so beware!")
     elif "help" in choice:
         print("I would assume the help command would be simple, but I guess not...")
+    elif "random" in choice:
+        print("Will run a random command, can even run itself!")
     elif "day" in choice:
         print("The day command returns the current day.")
     else:
@@ -262,6 +294,8 @@ while running == True:
         day()
     elif "math" in user_choice:
         maths()
+    elif "random" in user_choice:
+        random_command()
     elif "help" in user_choice:
         help()
     else:
