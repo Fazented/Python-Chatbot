@@ -11,7 +11,9 @@ import datetime
 
 commandlist = ["Joke", "Flip a Coin", "Weather", "Gambling", "Hangman", "Day", "Inspirational Quote", "Help" ] # List of commands for help command
 words = ["python", "computer", "programming", "code", "algorithm", "coder", "school"] # words to guess in Hangman
-greetings = ["hello", "hi", "yo", "greeting", "howdy", "hey", "bonjour"] # List of greetings for the chatbot to recognise
+# Lists of words for the chat part to recognise
+greetings = ["hello", "hi", "yo", "greeting", "howdy", "hey", "bonjour"] # List of greetings
+bad_feeling = ["", "", "", "", "", "", "", "", "", "", "", ]
 
 gamblingchance = randint(1,20) # Chance to score a win while gambling
 money = 1000 # Amount of money to start gambling
@@ -19,7 +21,13 @@ running = True # loops the chatbot
 
 # Defining the actual chat part of chatbot
 def chat():
-    print("Sorry, not avalible yet!")
+
+    print("Hello, what is your name?")
+    name = input("> ")
+    print(f"How are you {name}?")
+    user_choice = input("> ")
+
+    if 
 
 # Defining all commands
 def joke():
@@ -28,27 +36,27 @@ def joke():
     if randomizer == 1:
         print("What do you call a fish with no eyes?")
         time.sleep(1)
-        print("A fsh!")
+        print("\nA fsh!")
     elif randomizer == 2:
         print("What do you call a can opener that doesn't work?")
         time.sleep(1)
-        print("A can't opener!")
+        print("\nA can't opener!")
     elif randomizer == 3:
         print("What do you get when you combine a rhetorical question and a joke?")
         time.sleep(1)
-        print("...")
+        print("\n...")
     elif randomizer == 4:
         print("Did you hear about the italian chef that died?")
         time.sleep(1)
-        print("He pasta way")
+        print("\nHe pasta way")
     elif randomizer == 5:
         print("A man tells his doctor, “Doc, help me. I’m addicted to Twitter!”")
         time.sleep(1)
-        print("The doctor replies “Sorry, I don't follow you.”")
+        print("\nThe doctor replies “Sorry, I don't follow you.”")
     elif randomizer == 6:
         print("What did the left eye say to the right eye?")
         time.sleep(1)
-        print("Between you and me, something smells.") 
+        print("\nBetween you and me, something smells.") 
  
 def flipcoin():
 
@@ -137,7 +145,7 @@ def hangman():
             print("")
             print("You won the game!")
             break
-        guess = input("\n\nGuess a character: ")
+        guess = input("Guess a character: ")
         guesses += guess
 
         if guess not in word:
@@ -147,6 +155,7 @@ def hangman():
             if turns == 0:
                 print("You lost the game.")
                 print("The word was", word)
+            
     else:
         print("Error")
 
@@ -188,9 +197,9 @@ print("Hello, I am Sadness Bot. An eternally sad chatbot. Use 'Help' to see a li
 
 # Main chatbot loop
 while running == True:
-    user_choice = input("What do you want me to do? ").lower()
+    user_choice = input("> ").lower()
 
-    if greetings in user_choice:
+    if user_choice in greetings:
         chat()
     if "joke" in user_choice:
         joke()
@@ -209,4 +218,4 @@ while running == True:
     elif "help" in user_choice:
         help()
     else:
-        print("Sorry, that is not a valid command. Type Help to see all usable commands.")
+        print("Sorry, that is not a valid command. Type 'Help' to see all usable commands.")
