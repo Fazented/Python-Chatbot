@@ -9,7 +9,7 @@ import asyncio
 import os
 import datetime
 
-commandlist = ["Joke", "Flip a Coin", "Weather", "Gambling", "Hangman", "Day", "Inspirational Quote", "Help" ] # List of commands for help command
+commandlist = ["Joke", "Flip a Coin", "Weather", "Gambling", "Hangman", "Day", "Maths", "Inspirational Quote", "Help" ] # List of commands for help command
 words = ["python", "computer", "programming", "code", "algorithm", "coder", "school"] # words to guess in Hangman
 # Lists of words for the chat part to recognise
 greetings = ["hello", "hi", "yo", "greeting", "howdy", "hey", "bonjour"] # List of greetings
@@ -206,7 +206,6 @@ def maths():
         print(f"The answer is {x/y}")
     elif "quit" in choice or "exit" in choice:
         print("Exiting Program")
-        break
     else:
         print("Error, enter a correct operation. Or, type exit or quit to leave.")
 
