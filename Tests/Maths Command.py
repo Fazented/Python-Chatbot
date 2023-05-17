@@ -6,10 +6,6 @@ if "math" in choice:
     print("You can use addition, subtraction, multiplication and division.")
     choice = input("")
     if "add" in choice:
-        x = int(input("Enter the fist number you want to add: "))
-        y = int(input("What is the second number "))
-        print("The answer is", x+y)
-    elif "subtract" in choice:
         while True:
             try:
                 x = int(input("Enter the first number you want to add: "))
@@ -17,10 +13,36 @@ if "math" in choice:
                 break
             except ValueError:
                 print("Sorry, That is not a valid number!")
-        print("The answer is", x+y)
+        print(f"The answer is {x+y}")
+    elif "subtract" in choice or "minus" in choice:
+        while True:
+            try:
+                x = int(input("Enter the first number you want to subtract: "))
+                y = int(input("Enter the second number: "))
+                break
+            except ValueError:
+                print("Sorry, That is not a valid number!")
+        print(f"The answer is {x-y}")
     elif "multiply" in choice or "multiplication" in choice:
-        int(input(""))
+        while True:
+            try:
+                x = int(input("Enter the first number you want to multiply: "))
+                y = int(input("Enter the second number: "))
+                break
+            except ValueError:
+                print("Sorry, That is not a valid number!")
+        print(f"The answer is {x*y}")
     elif "divide" in choice or "division" in choice:
-        int(input(""))
+        while True:
+            try:
+                x = int(input("Enter the first number you want to divide: "))
+                y = int(input("Enter the second number: "))
+                break
+            except ValueError:
+                print("Sorry, That is not a valid number!")
+        print(f"The answer is {x/y}")
+    elif "quit" in choice or "exit" in choice:
+        print("Exiting Program")
+        break
     else:
-        print("Error")
+        print("Error, enter a correct operation. Or, type exit or quit to leave.")

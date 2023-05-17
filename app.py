@@ -13,7 +13,7 @@ commandlist = ["Joke", "Flip a Coin", "Weather", "Gambling", "Hangman", "Day", "
 words = ["python", "computer", "programming", "code", "algorithm", "coder", "school"] # words to guess in Hangman
 # Lists of words for the chat part to recognise
 greetings = ["hello", "hi", "yo", "greeting", "howdy", "hey", "bonjour"] # List of greetings
-bad_feeling = ["", "", "", "", "", "", "", "", "", "", "", ]
+bad_feeling = ["", "", "", "", "", "", "", "", "", "", "", ] 
 
 gamblingchance = randint(1,20) # Chance to score a win while gambling
 money = 1000 # Amount of money to start gambling
@@ -26,8 +26,7 @@ def chat():
     name = input("> ")
     print(f"How are you {name}?")
     user_choice = input("> ")
-
-    if 
+    print("Not done yet")
 
 # Defining all commands
 def joke():
@@ -164,11 +163,58 @@ def day():
     today = datetime.today()
     print("Today is", today)
 
+def maths():
+
+    print("What operation do you want to use? ")
+    print("You can use addition, subtraction, multiplication and division.")
+    choice = input("")
+    if "add" in choice:
+        while True:
+            try:
+                x = int(input("Enter the first number you want to add: "))
+                y = int(input("Enter the second number: "))
+                break
+            except ValueError:
+                print("Sorry, That is not a valid number!")
+        print(f"The answer is {x+y}")
+    elif "subtract" in choice or "minus" in choice:
+        while True:
+            try:
+                x = int(input("Enter the first number you want to subtract: "))
+                y = int(input("Enter the second number: "))
+                break
+            except ValueError:
+                print("Sorry, That is not a valid number!")
+        print(f"The answer is {x-y}")
+    elif "multiply" in choice or "multiplication" in choice:
+        while True:
+            try:
+                x = int(input("Enter the first number you want to multiply: "))
+                y = int(input("Enter the second number: "))
+                break
+            except ValueError:
+                print("Sorry, That is not a valid number!")
+        print(f"The answer is {x*y}")
+    elif "divide" in choice or "division" in choice:
+        while True:
+            try:
+                x = int(input("Enter the first number you want to divide: "))
+                y = int(input("Enter the second number: "))
+                break
+            except ValueError:
+                print("Sorry, That is not a valid number!")
+        print(f"The answer is {x/y}")
+    elif "quit" in choice or "exit" in choice:
+        print("Exiting Program")
+        break
+    else:
+        print("Error, enter a correct operation. Or, type exit or quit to leave.")
+
 def help():
 
     print(f"What command do you want to know about? There are currently {len(commandlist)} commands.")
     for index, x in enumerate(commandlist): # this code is from https://stackoverflow.com/questions/72497658/how-do-i-add-and-at-the-end-of-the-list-element
-        if index != len(commandlist)-1:     # because I spent a whole lesson on this and this code is so simple and good, I had just given up and used this: print(*commandlist, sep = ", ")
+        if index != len(commandlist)-1:     # because I spent a whole lesson on this and this code is simple
             print("{}, ".format(x), end = "");
         else:
             print("and {}.".format(x), end = "");
@@ -215,6 +261,8 @@ while running == True:
         hangman()
     elif "day" in user_choice:
         day()
+    elif "math" in user_choice:
+        maths()
     elif "help" in user_choice:
         help()
     else:
