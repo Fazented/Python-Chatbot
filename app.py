@@ -7,7 +7,7 @@ import requests
 import python_weather
 import asyncio
 import os
-import datetime
+from datetime import datetime
 
 commandlist = ["Joke", "Flip a Coin", "Weather", "Gambling", "Hangman", "Day", "Maths", "Random", "Inspirational Quote", "Help" ] # List of commands for help command
 words = ["python", "computer", "programming", "code", "algorithm", "coder", "school"] # words to guess in Hangman
@@ -159,9 +159,9 @@ def hangman():
         print("Error")
 
 def day():
-
+    
     today = datetime.today()
-    print("Today is", today)
+    print(f"Today is {today:%B %d}")
 
 def maths():
 
