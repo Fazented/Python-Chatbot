@@ -279,7 +279,7 @@ while running == True:
 
     if user_choice in greetings:
         chat()
-    if "joke" in user_choice:
+    elif "joke" in user_choice:
         joke()
     elif "coin" in user_choice:
         flipcoin()
