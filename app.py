@@ -81,7 +81,8 @@ def quote():
 def weather():
 
     today = datetime.today() # Gets the current day for weather
-    location = input("What place do you want the weather from? ")
+    print("What place do you want the weather from?")
+    location = input("> ")
 
     async def getweather():
         async with python_weather.Client(format=python_weather.METRIC) as client:
@@ -248,7 +249,7 @@ def help():
             print("{}, ".format(x), end = "");
         else:
             print("and {}.".format(x), end = "");
-    choice = input("\n> ").lower()
+    choice = input("\nHelp: ").lower()
     
     if "joke" in choice:
         print("The Joke command will tell you a random joke when you ask.")
@@ -269,7 +270,7 @@ def help():
     elif "day" in choice:
         print("The day command returns the current day.")
     else:
-        print("error")
+        print("Error! That is not a real command!")
 
 print("Hello, I am Sadness Bot. An eternally sad chatbot. Use 'Help' to see a list of commands.")
 
