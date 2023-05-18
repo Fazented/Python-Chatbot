@@ -7,15 +7,21 @@ import requests
 import python_weather
 import asyncio
 import os
-from datetime import datetime
+import datetime
 
-commandlist = ["Joke", "Flip a Coin", "Weather", "Gambling", "Hangman", "Day", "Maths", "Random", "Inspirational Quote", "Help" ] # List of commands for help command
+commandlist = ["Chat", "Joke", "Flip a Coin", "Weather", "Gambling", "Hangman", "Day", "Maths", "Inspirational Quote", "Help" ] # List of commands for help command
 words = ["python", "computer", "programming", "code", "algorithm", "coder", "school"] # words to guess in Hangman
+
 # Lists of words for the chat part to recognise
 greetings = ["hello", "hi", "yo", "greeting", "howdy", "hey", "bonjour"] # List of greetings
-bad_feeling = ["", "", "", "", "", "", "", "", "", "", "", ] 
+bad_feeling = ["bad", "not good", "sad", "depressed", "angry", "annoying", "", "", "", "", "", ] # List of replies to detect bad feelings
+good_feeling = ["good", "happy", "joy", "great", "wonderful", "", "", "", "", "", "", ]
+colours = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ] # List of coulours for the bot to recognise, incase an input includes other words
 
+turns = 10 # Amount of turns for hangman, here because it's referenced by help command
+word = random.choice(words) #Picks a random word for hangman
 gamblingchance = randint(1,20) # Chance to score a win while gambling
+money = 1000 # Amount of money to start gambling
 running = True # loops the chatbot
 
 # Defining the actual chat part of chatbot
@@ -23,9 +29,21 @@ def chat():
 
     print("Hello, what is your name?")
     name = input("> ")
+
     print(f"How are you {name}?")
     user_choice = input("> ")
-    print("Not done yet")
+
+    # Will reply to the users emotions
+    if user_choice in good_feeling:
+        print("That's great, good to hear that.")
+    elif user_choice in bad_feeling:
+        print("That's not good, I hope you feel better soon!")
+    else:
+        print("Cool!")
+    
+    print("What is your favourite colour?")
+    colour = input("> ")
+
 
 # Defining all commands
 def joke():
@@ -37,22 +55,27 @@ def joke():
         print("What do you call a fish with no eyes?")
         time.sleep(1)
         print("\nA fsh!")
+    
     elif randomizer == 2:
         print("What do you call a can opener that doesn't work?")
         time.sleep(1)
         print("\nA can't opener!") # My fav joke :)
+    
     elif randomizer == 3:
         print("What do you get when you combine a rhetorical question and a joke?")
         time.sleep(1)
         print("\n...")
+    
     elif randomizer == 4:
         print("Did you hear about the italian chef that died?")
         time.sleep(1)
         print("\nHe pasta way")
+    
     elif randomizer == 5:
         print("A man tells his doctor, “Doc, help me. I’m addicted to Twitter!”")
         time.sleep(1)
         print("\nThe doctor replies “Sorry, I don't follow you.”")
+    
     elif randomizer == 6:
         print("What did the left eye say to the right eye?")
         time.sleep(1)
@@ -75,13 +98,16 @@ def flipcoin():
     else:
         print("\nThe coin is Heads.")
 
-def quote(): #NOT DONE YET
+def quote():
 
-    quote = inspirobot.generate()
-    img_url = quote.url
-    img = Image.open(requests.get(img_url, stream = True).raw)
-    img.save('inspiration.jpg')
-    img.show()
+    quote = inspirobot.generate() # Generates a quote and puts the url to quote.url
+
+    img_url = quote.url # Saves the link to a variable that Pillow can use
+
+    img = Image.open(requests.get(img_url, stream = True).raw) #Opens the image from the url
+    img.save('inspiration.jpg') # Downloads the image
+
+    img.show() # Shows the image
 
 def weather():
 
@@ -293,7 +319,7 @@ def help():
         print("The Gambling command will give you a set abount of money to gamble, and you have to pick an amount of money to gamble. There is a small chance you win back your money and more, but be careful you do not gamble all your money away too soon!")
 
     elif "hangman" in choice:
-        print("The hangman command will make a game of hangman for 1 or 2 players, where a friend will input a word or the program and you have to guess the word within 10 guesses.")
+        print(f"The hangman command will make a game of hangman for 1 or 2 players, where a friend will input a word or the program and you have to guess the word within {turns} guesses.")
 
     elif "quote" in choice:
         print("The Quote command will get a random inspirational quote from InspiroBot. These quotes may be very strange though, so beware!")
@@ -310,6 +336,8 @@ def help():
     else:
         print("Error! That is not a real command!")
 
+# Main Chatbot (finally)
+
 print("Hello, I am Sadness Bot. An eternally sad chatbot. Use 'Help' to see a list of commands.")
 
 # Main chatbot loop
@@ -318,7 +346,7 @@ while running == True:
 
     if user_choice in greetings:
         chat()
-    elif "joke" in user_choice:
+    if "joke" in user_choice:
         joke()
     elif "coin" in user_choice:
         flipcoin()
@@ -326,16 +354,14 @@ while running == True:
         quote()
     elif "weather" in user_choice:
         weather()
+    elif "gambling" in user_choice:
+        gambling()
     elif "hangman" in user_choice:
         hangman()
-    elif "gambling" in user_choice or "gamble" in user_choice or "bet" in user_choice:
-        gambling()
     elif "day" in user_choice:
         day()
     elif "math" in user_choice:
         maths()
-    elif "random" in user_choice:
-        random_command()
     elif "help" in user_choice:
         help()
     else:
