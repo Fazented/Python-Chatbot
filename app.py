@@ -16,7 +16,6 @@ greetings = ["hello", "hi", "yo", "greeting", "howdy", "hey", "bonjour"] # List 
 bad_feeling = ["", "", "", "", "", "", "", "", "", "", "", ] 
 
 gamblingchance = randint(1,20) # Chance to score a win while gambling
-money = 1000 # Amount of money to start gambling
 running = True # loops the chatbot
 
 # Defining the actual chat part of chatbot
@@ -102,8 +101,10 @@ def weather():
 
 def gambling():
 
+    money = 1000 # Amount of money to start gambling
+
     while money > 0:
-        print("You have", money)
+        print(f"You Have ${money}")
         bet = input("\nHow much do you want to bet? ")
         if bet.isdigit():   
             bet = int(bet)
@@ -144,7 +145,7 @@ def hangman():
             print("")
             print("You won the game!")
             break
-        guess = input("Guess a character: ")
+        guess = input("\nGuess a character: ")
         guesses += guess
 
         if guess not in word:
@@ -159,7 +160,7 @@ def hangman():
         print("Error")
 
 def day():
-    
+
     today = datetime.today()
     print(f"Today is {today:%B %d}")
 
@@ -167,7 +168,7 @@ def maths():
 
     print("What operation do you want to use? ")
     print("You can use addition, subtraction, multiplication and division.")
-    choice = input("")
+    choice = input("> ")
     if "add" in choice:
         while True:
             try:
@@ -286,10 +287,10 @@ while running == True:
         quote()
     elif "weather" in user_choice:
         weather()
-    elif "gambling" in user_choice:
-        gambling()
     elif "hangman" in user_choice:
         hangman()
+    elif "gambling" in user_choice or "gamble" in user_choice or "bet" in user_choice:
+        gambling()
     elif "day" in user_choice:
         day()
     elif "math" in user_choice:
