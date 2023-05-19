@@ -7,7 +7,7 @@ import requests
 import python_weather
 import asyncio
 import os
-import datetime
+from datetime import datetime
 
 commandlist = ["Chat", "Joke", "Flip a Coin", "Weather", "Gambling", "Hangman", "Day", "Maths", "Inspirational Quote", "Help" ] # List of commands for help command
 words = ["python", "computer", "programming", "code", "algorithm", "coder", "school"] # words to guess in Hangman
@@ -49,10 +49,9 @@ def chat():
     colour = colour.removeprefix("my favourite colour is")
 
     if colour in colours:
-        print(f"Cool! I love {colour}, got to bo one of my favourites")
+        print(f"Cool! I love {colour}, got to be one of my favourites")
     else:
         print("Good choice!")
-
 
 # Defining all commands
 def joke():
@@ -335,6 +334,9 @@ def help():
 
     elif "help" in choice:
         print("I would assume the help command would be simple, but I guess not...")
+    
+    elif "maths" in choice:
+        print("The maths command with add, subtract, divide or multiply 2 numbers.")
 
     elif "random" in choice:
         print("Will run a random command, can even run itself!")
@@ -355,7 +357,7 @@ while running == True:
 
     if user_choice in greetings:
         chat()
-    if "joke" in user_choice:
+    elif "joke" in user_choice:
         joke()
     elif "coin" in user_choice:
         flipcoin()
