@@ -14,9 +14,9 @@ words = ["python", "computer", "programming", "code", "algorithm", "coder", "sch
 
 # Lists of words for the chat part to recognise
 greetings = ["hello", "hi", "yo", "greeting", "howdy", "hey", "bonjour"] # List of greetings
-bad_feeling = ["bad", "not good", "sad", "depressed", "angry", "annoying", "", "", "", "", "", ] # List of replies to detect bad feelings
+bad_feeling = ["bad", "not good", "sad", "depressed", "angry", "annoying", "not good", "not feeling good", "not happy", "", "", ] # List of replies to detect bad feelings
 good_feeling = ["good", "happy", "joy", "great", "wonderful", "", "", "", "", "", "", ]
-colours = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ] # List of coulours for the bot to recognise, incase an input includes other words
+colours = ["red", "orange", "yellow", "green", "purple", "blue", "light blue", "pink", "gray", "grey", "indigo", "turquoise", "black", "white", "navy", "brown", "maroon", "aqua", "light gray", "light grey", "dark gray", "dark grey", "dark green", "tan", ""] # List of coulours for the bot to recognise, incase an input includes other words
 
 turns = 10 # Amount of turns for hangman, here because it's referenced by help command
 word = random.choice(words) #Picks a random word for hangman
@@ -30,19 +30,28 @@ def chat():
     print("Hello, what is your name?")
     name = input("> ")
 
+    name = name.removeprefix("my name is ")
+
     print(f"How are you {name}?")
-    user_choice = input("> ")
+    feeling = input("> ")
 
     # Will reply to the users emotions
-    if user_choice in good_feeling:
+    if feeling in good_feeling:
         print("That's great, good to hear that.")
-    elif user_choice in bad_feeling:
+    elif feeling in bad_feeling:
         print("That's not good, I hope you feel better soon!")
     else:
         print("Cool!")
     
     print("What is your favourite colour?")
-    colour = input("> ")
+    colour = input("> ").lower()
+
+    colour = colour.removeprefix("my favourite colour is")
+
+    if colour in colours:
+        print(f"Cool! I love {colour}, got to bo one of my favourites")
+    else:
+        print("Good choice!")
 
 
 # Defining all commands
