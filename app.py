@@ -221,10 +221,19 @@ def day():
 
 def maths():
 
-    print("What operation do you want to use? ")
-    print("You can use addition, subtraction, multiplication and division.")
+    while True:
+        print("\nWhat operation do you want to use? ")
+        print("You can use addition, subtraction, multiplication and division.")
 
-    choice = input("> ")
+        choice = input("> ")
+        
+        if "add" in choice or "subtract" in choice or "multiply" in choice or "divide" in choice:
+            break
+        elif "quit" in choice or "exit" in choice:
+            print("Exiting...")
+            break
+        else:
+            print("Error, not an operation. Type exit or quit to leave.")
 
     if "add" in choice:
         while True:
